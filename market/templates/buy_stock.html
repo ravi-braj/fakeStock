@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+	<h1>Purchase <strong>{{stockinst.symbol}}</strong></h1>
+	<div class = "quote col-4">
+		<h3>Quoted Price</h3>
+		<h4>{{ quote.price }}</h4>
+	</div>
+	<div class = "quote col-4">
+		<h3>Quantity Available</h3>
+		<h4>{{ quote.volume }}</h4>
+	</div>
+	<div class = "col-4">
+		<h4>Up to date as of: {{ quote.timestamp }}</h4>
+	</div>
+
+
+
+	
+	<div class="row">
+		<form action="" method="post">
+			{% csrf_token %}
+			<table>
+			{{ form.as_p }}
+			</table>
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+
+{% endblock %}

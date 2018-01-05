@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% load myTags %}
+
+{% block content %}
+
+
+	<h1>My Holdings</h1>
+
+
+<div class = listings>
+	<table class = "table table-dark">
+		<thead>
+			<tr>
+				<th>Symbol</th>
+				<th>Name</th>
+				<th>Quantity</th>
+				<th>Purchase price</th>
+				<th>Purchase date</th>
+				<th>Current price</th>
+			</tr>
+		</thead>
+		<tbody>
+
+	{% if ownedstock_list %}
+		{% for owned in ownedstock_list %} 
+			<tr>
+				<th scope="row"><a href="{{ owned.stock.get_absolute_url }}">{{ owned.stock.symbol }}</a></td>
+				<td>{{ owned.stock.name }}</td>
+				<td>{{ owned.quantity }}</td>
+				<td>{{ owned.price_at_purchase }}</td>
+				<td>{{ owned.time_of_purchase }}</td>
+				<td>{{ quotes|get_price:owned.stock.symbol }}
+				<td><a href="{% url 'sell-stock' owned.id %}">Sell</a></td>
+			</tr>
+		{% endfor %}
+
+	{% endif %}
+		</tbody>
+	</table> 
+
+</div>
+
+{% endblock %}

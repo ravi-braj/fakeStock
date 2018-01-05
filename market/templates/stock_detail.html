@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Stock: {{ stock.symbol }}</h1>
+
+  <p><strong>Name:</strong> <a href="">{{ stock.name }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Latest price: </strong> {{ price }} </p>
+
+  {% if user.is_authenticated %}
+  <p><a href="{% url 'buy-stock' stock.symbol %}">Buy</a><p>
+  {% endif %} 
+
+  <div class = listings>
+    <h1>Historic values</h1>
+
+    <table class = "table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Daily Volume</th>
+          <th scope="col">Closing Price</th>
+        </tr>
+      </thead>
+      <tbody>
+
+  {% for key, value in historic.items %} 
+        <tr>
+          <th scope="row">{{key}}</td>
+          <td>{{ value.volume }}</td>
+          <td>{{ value.close }}</td>
+        </tr>
+  {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

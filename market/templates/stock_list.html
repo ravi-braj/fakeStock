@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+{% load myTags %}
+
+{% block content %}
+	<div class = listings>
+		<h3>Stock List</h3>
+
+		<table class = "table table-dark">
+			<thead>
+				<tr>
+					<th scope="col">Symbol</th>
+					<th scope="col">Name</th>
+					<th scope="col">Price</th>
+					<th scope="col">Daily Volume</th>
+				</tr>
+			</thead>
+			<tbody>
+    {% if stock_list %}
+
+
+		{% for stock in stock_list %}
+				<tr>
+					<th scope="row"><a href="{{ stock.get_absolute_url }}">{{ stock.symbol }}</a></td>
+					<td>{{stock.name}}</td>
+					<td>{{ quotes|get_price:stock.symbol }}</td>
+					<td>{{ quotes|get_volume:stock.symbol }}</td>
+					{% if user.is_authenticated %}
+					<td><a href="{% url 'buy-stock' stock.symbol %}">Buy</a></td>
+					{% endif %} 
+				</tr>
+		{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}       
+	</div>
+{% endblock %}
