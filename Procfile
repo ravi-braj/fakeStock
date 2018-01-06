@@ -1,0 +1,1 @@
+web: gunicorn fakeStock.wsgi --log-file -
