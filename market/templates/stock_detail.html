@@ -4,7 +4,7 @@
   <h1>Stock: {{ stock.symbol }}</h1>
 
   <p><strong>Name:</strong> <a href="">{{ stock.name }}</a></p> <!-- author detail link not yet defined -->
-  <p><strong>Latest price: </strong> {{ price }} </p>
+  <p><strong>Latest price: </strong> ${{ price }} USD </p>
 
   {% if user.is_authenticated %}
   <p><a href="{% url 'buy-stock' stock.symbol %}">Buy</a><p>

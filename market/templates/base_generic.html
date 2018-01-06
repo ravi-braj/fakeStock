@@ -43,8 +43,8 @@
 			{% if user.is_authenticated %}
 				{% if trader %}
 			
-				<li><span class="value navbar-text"> Holdings: {{ trader.value }} </span></li>
-				<li><span class="value navbar-text"> Cash: {{ trader.cash }} </span></li>
+				<li><span class="value navbar-text"> Holdings: ${{ trader.value }} </span></li>
+				<li><span class="value navbar-text"> Cash: ${{ trader.cash }} </span></li>
 				<li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
 				{% else %}
 				<li><span class="value navbar-text"> Not logged in </span></li>
