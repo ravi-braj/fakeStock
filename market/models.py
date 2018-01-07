@@ -40,7 +40,8 @@ def save_user_profile(sender, instance, **kwargs):
 model for representing stocks. Used to store the offline list of symbols to call to the alpha Q API and their corresponding names
 """
 class Stock(models.Model):
-	name = models.CharField(primary_key = True, max_length = 250, help_text="Enter the name of stock")
+	id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="unique ID for trader")
+	name = models.CharField(max_length = 250, help_text="Enter the name of stock")
 	symbol = models.CharField(max_length = 20, help_text = "Enter the stocks name")
 
 	def get_absolute_url(self):
