@@ -11,6 +11,7 @@ from django.db.models.signals import post_save
 """
 Model that supplements the generic User model.
 Used for storing information about cash balance
+.
 """
 
 class Trader(models.Model):
