@@ -32,9 +32,9 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Trader.objects.create(user=instance, cash=5)
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.trader.save()
+#@receiver(post_save, sender=User)
+#def save_user_profile(sender, instance, **kwargs):
+#    instance.trader.save()
 
 """
 model for representing stocks. Used to store the offline list of symbols to call to the alpha Q API and their corresponding names
